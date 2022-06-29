@@ -12,6 +12,8 @@ import { routing } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { LocationCardComponent } from './location-card/location-card.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -20,10 +22,12 @@ import { environment } from '../environments/environment';
     ForecastsListComponent,
     CurrentConditionsComponent,
     MainPageComponent,
+    LocationCardComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    FlexLayoutModule,
     HttpClientModule,
     RouterModule,
     routing,
