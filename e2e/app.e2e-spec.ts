@@ -2,7 +2,7 @@ import { NgWeatherPage } from './app.po';
 import {browser, By, element} from 'protractor';
 
 describe('ng-weather App', () => {
-  let page: NgWeatherPage = new NgWeatherPage();
+  const page: NgWeatherPage = new NgWeatherPage();
 
       beforeEach(async() => {
         await page.navigateTo();
