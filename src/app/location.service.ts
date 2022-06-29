@@ -3,7 +3,7 @@ import { WeatherService } from './weather.service';
 
 export const LOCATIONS = 'locations';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class LocationService {
   locations: string[] = [];
 
