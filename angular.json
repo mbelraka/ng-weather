@@ -19,6 +19,7 @@
             "assets": ["src/assets", "src/favicon.ico", "src/manifest.json"],
             "styles": [
               "src/styles.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ]
           },
@@ -39,7 +40,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "serviceWorker": true
+              "serviceWorker": false
             }
           }
         },
@@ -85,8 +86,8 @@
       }
     },
     "ng-weather-e2e": {
-      "root": "",
-      "sourceRoot": "",
+      "root": "ng-weather",
+      "sourceRoot": "ng-weather",
       "projectType": "application",
       "architect": {
         "e2e": {

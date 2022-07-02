@@ -14,6 +14,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { LocationCardComponent } from './location-card/location-card.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ExtractPrefixPipe } from './utilities/pipes/extractPrefix.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     CurrentConditionsComponent,
     MainPageComponent,
     LocationCardComponent,
+    ExtractPrefixPipe,
   ],
   imports: [
     BrowserModule,

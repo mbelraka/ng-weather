@@ -2,7 +2,7 @@
   <div
     *ngFor="let location of locations"
     class="well flex"
-    (click)="showForecast(location.zip)"
+    (click)="showForecast(location)"
   >
     <app-location-card [location]="location"></app-location-card>
   </div>

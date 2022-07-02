@@ -1,8 +1,72 @@
-<div class="well">
-  <h2>Enter a zipcode:</h2>
-  <input type="text" #zipcode placeholder="Zipcode" class="form-control">
-  <br>
-  <button class="btn btn-primary" (click)="addLocation(zipcode.value)" >
-    Add location
+<div
+  fxLayout="column"
+  fxLayoutAlign="start start"
+  fxLayoutGap="16px"
+  class="well"
+>
+  <h2>Enter country and zipcode:</h2>
+  <div
+    class="inputs-container"
+    fxFlex="1 1 auto"
+    fxLayout="row"
+    fxLayoutAlign="start center"
+    fxLayoutGap="16px"
+  >
+    <div fxFlex="1 1 auto" class="input-container country-input-container" (mouseenter)="showList(true)" (mouseleave)="showList(false)">
+      <input
+        type="text"
+        #country
+        placeholder="Country"
+        class="form-control input"
+        [(ngModel)]="countryModel"
+        (input)="filterCountries($event)"
+      />
+      <div class="countries-list" [class.-hidden]="!showCountriesList">
+        <div
+          class="country"
+          *ngFor="let country of filteredCountries"
+          (click)="pickCountry(country)"
+        >
+          <span class="value"
+            ><span class="prefix">{{ countryModel || '' | titlecase }}</span
+            ><span></span
+            >{{ country?.name | extractPrefix: countryModel }}</span
+          >
+        </div>
+      </div>
+    </div>
+    <div class="input-container zipcode-input-container">
+      <input
+        type="text"
+        #zipcode
+        fxFlex="1 1 auto"
+        placeholder="Zipcode"
+        class="form-control input"
+      />
+    </div>
+  </div>
+  <button
+    class="btn btn-primary location-button"
+    [disabled]="appLoading || appDone"
+    [class.-loading]="appLoading"
+    [class.-done]="appDone"
+    (click)="addLocation(zipcode.value)"
+  >
+    <ng-container
+      [ngTemplateOutlet]="appLoading ? loading : appDone ? done : ready"
+    ></ng-container>
   </button>
 </div>
+
+<ng-template #ready>
+  <span class="button-content -ready"> Add location </span>
+</ng-template>
+
+<ng-template #loading>
+  <span class="button-content -loading"> Adding... </span>
+</ng-template>
+
+<ng-template #done>
+  <i class="far fa-circle-check"></i>
+  <span class="button-content -done"> Done </span>
+</ng-template>
